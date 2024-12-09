@@ -27,8 +27,17 @@ class UsuarioIFRO(ABC):
     return self.__senha
 
   def criar_senha (self):
-    self.__senha = int(input("Digite sua senha: "))
-    return self.__senha
+    while True:
+      try:
+        self.__senha = int(input("Digite sua senha: "))
+        if len(str(self.__senha)) != 4:  # Verificação para garantir que a senha tenha 4 dígitos
+            raise ValueError("A senha deve ter exatamente 4 dígitos.")
+        return self.__senha
+      except ValueError as e:
+        print(f"Erro: {e}. Tente novamente.")
+        except Exception as e:
+        print(f"Erro inesperado: {e}. Tente novamente.")
+        return self.__senha
   
   def set_senha(self):
     self.__novasenha =("Digite sua nova senha:")
